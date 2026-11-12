@@ -1,167 +1,64 @@
 # MyShop 🛍️
 
-A fully functional e-commerce web application built with React.js and Tailwind CSS.
+An e-commerce web app built with React, Tailwind CSS, and Firebase Auth.
 
-![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-Auth-FFCA28?logo=firebase&logoColor=black)
-
----
-
-## Live Demo
-
-> Deploy to Vercel: `npm run build` → drop the `dist/` folder on [vercel.com](https://vercel.com)
-
----
+**Live demo:** _add your Vercel link here after deploying_
 
 ## Features
 
-- **Product catalogue** — live data from FakeStore API with local JSON fallback
-- **Search, filter & sort** — real-time filtering by name, category, and price
-- **Product detail pages** — dynamic routes at `/product/:id`
-- **Shopping cart** — add, remove, update quantities with localStorage persistence
-- **Order summary** — subtotal, tax, free shipping threshold
-- **User authentication** — signup, login, logout via Firebase Auth
-- **Protected routes** — `/profile` redirects unauthenticated users to `/login`
-- **Session persistence** — stays logged in across page refreshes
-- **Fully responsive** — works on mobile, tablet, and desktop
-
----
+- Product catalogue from FakeStore API, with a local JSON fallback
+- Search, filter, and sort
+- Product detail pages (`/product/:id`)
+- Shopping cart with localStorage persistence
+- Signup, login, and logout via Firebase Auth
+- Protected `/profile` route
+- Responsive design
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | React.js 18 (Vite) |
-| Styling | Tailwind CSS v4 |
-| Routing | React Router v6 |
-| State | Context API + useReducer |
-| Auth | Firebase Authentication |
-| Data | FakeStore API + local fallback |
-
----
+React 18 (Vite) · Tailwind CSS v4 · React Router v6 · Context API + useReducer · Firebase Authentication
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js v18 or higher
-- A Firebase project with Email/Password auth enabled
-
-### Installation
+**Prerequisites:** Node.js 18+ and a Firebase project with Email/Password auth enabled.
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/siddusid73/my-shop.git
 cd my-shop
-
-# 2. Install dependencies
 npm install
+```
 
-# 3. Add your Firebase config (see below)
+Create a `.env` file in the project root:
 
-# 4. Start the dev server
+```
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+Then run:
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open http://localhost:5173.
 
----
+## Scripts
 
-## Firebase Setup
-
-1. Go to [firebase.google.com](https://firebase.google.com) and create a project
-2. Enable **Email/Password** under Authentication → Sign-in method
-3. Copy your Firebase config into `src/firebase.js`:
-
-```js
-const firebaseConfig = {
-  apiKey:            "YOUR_API_KEY",
-  authDomain:        "YOUR_AUTH_DOMAIN",
-  projectId:         "YOUR_PROJECT_ID",
-  storageBucket:     "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId:             "YOUR_APP_ID",
-}
-```
-
-> **Note:** For production, store these values in a `.env` file and add it to `.gitignore`.
-
----
-
-## Project Structure
-
-```
-src/
-├── components/
-│   ├── Navbar.jsx           # Sticky nav with cart badge and auth avatar
-│   ├── ProductCard.jsx      # Reusable product card with rating
-│   ├── FormInput.jsx        # Reusable input with inline error display
-│   └── ProtectedRoute.jsx   # Redirects unauthenticated users
-├── context/
-│   ├── CartContext.jsx      # Global cart state with useReducer
-│   └── AuthContext.jsx      # Firebase auth state and helpers
-├── pages/
-│   ├── Home.jsx             # Hero section and feature cards
-│   ├── Shop.jsx             # Product grid with search, filter, sort
-│   ├── ProductDetail.jsx    # Single product with add-to-cart
-│   ├── Cart.jsx             # Cart items and order summary
-│   ├── Login.jsx            # Login form
-│   ├── Signup.jsx           # Signup form with validation
-│   └── Profile.jsx          # Protected user profile page
-├── hooks/
-│   └── useProducts.js       # Data fetching with API + fallback
-├── data/
-│   └── products.json        # Local product data fallback
-├── firebase.js              # Firebase initialisation
-├── App.jsx                  # Routes configuration
-└── main.jsx                 # App entry point with providers
-```
-
----
-
-## Available Scripts
-
-```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run preview  # Preview production build locally
-```
-
----
+| Command | Description |
+|---|---|
+| `npm run dev` | Start dev server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview the production build |
 
 ## Deployment
 
-### Vercel (recommended)
-
-```bash
-npm run build
-# Drag the dist/ folder to vercel.com, or use the Vercel CLI:
-npx vercel --prod
-```
-
-### Netlify
-
-```bash
-npm run build
-# Drag the dist/ folder to netlify.com
-# Set publish directory to: dist
-```
-
----
-
-## Roadmap
-
-- [ ] Stripe payment integration
-- [ ] Product reviews and ratings
-- [ ] Wishlist / saved items
-- [ ] Admin dashboard
-- [ ] Dark mode toggle
-- [ ] Node.js + MongoDB backend
-
----
+Run `npm run build`, then deploy the `dist/` folder to Vercel or Netlify. Add the `.env` variables in your host's settings.
 
 ## License
 
-MIT — free to use for learning and personal projects.
+MIT
