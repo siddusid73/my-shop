@@ -2,7 +2,7 @@
 
 An e-commerce web app built with React, Tailwind CSS, and Firebase Auth.
 
-**Live demo:** _add your Vercel link here after deploying_
+[![Live Demo](https://shields.io)](https://my-shop-pied-five.vercel.app/)
 
 ## Features
 
