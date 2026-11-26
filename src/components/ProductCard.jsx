@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { formatINR } from '../utils/currency'
 
 function StarRating({ rate }) {
   return (
@@ -43,7 +44,7 @@ function ProductCard({ product }) {
           <StarRating rate={rating.rate} />
           <div className="flex items-center justify-between mt-3">
             <span className="text-lg font-bold text-gray-900">
-              ${price.toFixed(2)}
+              {formatINR(price)}
             </span>
             <span className="text-xs bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full font-medium">
               View →
