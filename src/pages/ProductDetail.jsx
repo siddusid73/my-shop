@@ -1,3 +1,4 @@
+import { formatINR } from '../utils/currency'
 import { useCart } from '../context/CartContext'
 import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -90,7 +91,7 @@ function handleAddToCart() {
 
           <p className="text-gray-500 text-sm leading-relaxed mb-6">{description}</p>
 
-          <p className="text-3xl font-bold text-gray-900 mb-6">${price.toFixed(2)}</p>
+          <p className="text-3xl font-bold text-gray-900 mb-6">{formatINR(price)}</p>
 
           {/* Quantity + Add to cart */}
           <div className="flex items-center gap-4">

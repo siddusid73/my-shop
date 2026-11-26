@@ -1,3 +1,4 @@
+import { formatINR } from '../utils/currency'
 import { useAuth } from '../context/AuthContext'
 import { useCart } from '../context/CartContext'
 import { useNavigate } from 'react-router-dom'
@@ -52,12 +53,12 @@ function Profile() {
               <div key={item.id} className="flex items-center justify-between text-sm">
                 <span className="text-gray-600 truncate flex-1 mr-4">{item.title}</span>
                 <span className="text-gray-400 mr-4">x{item.qty}</span>
-                <span className="font-medium text-gray-800">${(item.price * item.qty).toFixed(2)}</span>
+                <span className="font-medium text-gray-800">{formatINR(item.price * item.qty)}</span>
               </div>
             ))}
             <div className="border-t border-gray-100 pt-3 flex justify-between font-bold text-gray-900 text-sm">
               <span>{totalItems} items</span>
-              <span>${totalPrice.toFixed(2)}</span>
+              <span>{formatINR(totalPrice)}</span>
             </div>
           </div>
         )}

@@ -1,3 +1,4 @@
+import { formatINR } from '../utils/currency'
 import { Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 
@@ -16,7 +17,7 @@ function CartItem({ item }) {
       <div className="flex-1 min-w-0">
         <p className="text-sm font-semibold text-gray-800 truncate">{item.title}</p>
         <p className="text-xs text-gray-400 mt-0.5 capitalize">{item.category}</p>
-        <p className="text-sm font-bold text-indigo-600 mt-1">${item.price.toFixed(2)}</p>
+        <p className="text-sm font-bold text-indigo-600 mt-1">{formatINR(item.price)}</p>
       </div>
 
       {/* Quantity controls */}
@@ -44,7 +45,7 @@ function CartItem({ item }) {
       {/* Line total */}
       <div className="text-right min-w-[64px]">
         <p className="text-sm font-bold text-gray-900">
-          ${(item.price * item.qty).toFixed(2)}
+          {formatINR(item.price * item.qty)}
         </p>
       </div>
 
@@ -114,28 +115,28 @@ function Cart() {
           <div className="space-y-3 text-sm">
             <div className="flex justify-between text-gray-600">
               <span>Subtotal ({totalItems} items)</span>
-              <span>${totalPrice.toFixed(2)}</span>
+              <span>{formatINR(totalPrice)}</span>
             </div>
             <div className="flex justify-between text-gray-600">
               <span>Shipping</span>
               <span className={shipping === 0 ? 'text-green-500 font-medium' : ''}>
-                {shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}
+                {shipping === 0 ? 'Free' : formatINR(shipping)}
               </span>
             </div>
             <div className="flex justify-between text-gray-600">
               <span>Tax (8%)</span>
-              <span>${tax.toFixed(2)}</span>
+              <span>{formatINR(tax)}</span>
             </div>
 
             {shipping > 0 && (
               <p className="text-xs text-indigo-500 bg-indigo-50 rounded-lg px-3 py-2">
-                Add ${(50 - totalPrice).toFixed(2)} more for free shipping!
+                Add {formatINR(50 - totalPrice)} more for free shipping!
               </p>
             )}
 
             <div className="border-t border-gray-100 pt-3 flex justify-between font-bold text-gray-900">
               <span>Total</span>
-              <span>${(totalPrice + shipping + tax).toFixed(2)}</span>
+              <span>{formatINR(totalPrice + shipping + tax)}</span>
             </div>
           </div>
 
